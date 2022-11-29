@@ -8,7 +8,7 @@ Tehtävät on tehty marraskuussa 2022 ja tehtävän tekemisessä on hyödynnetty
 
 ## a) Hello Window Salt! Tee Windowsille SLS-tiedostoon Salt-tila, joka tekee tiedoston nimeltä "suolaikkuna.txt".
 
-Aloitetaan asentamalla Salt Minion Windowsille -[download install file](https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/windows.html).
+Aloitetaan asentamalla Salt Minion Windowsille ([download install file](https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/windows.html)).
 
 Kun tiedosto on tullut latauskansioon, avataan Windowsin PowerShell ”run as a administrator”:ina.
 
@@ -24,13 +24,13 @@ Tehdään asennus.
 
 <img width="469" alt="01_SALTwindowsille" src="https://user-images.githubusercontent.com/117899949/204536903-1870dbdf-3cf4-4529-8e39-97c4bc276622.png">
 
-Testataan, että salt toimii:
+Testataan, että salt toimii ajamalla lokaalisti komento "echo hello":
 
     salt-call –local cmd.run ”echo hello”
 
 <img width="443" alt="1 1" src="https://user-images.githubusercontent.com/117899949/204537047-ec99596a-354f-4f8a-83fa-69a1e5c78d1f.png">
 
-Aloitetaan avaamalla Windowsin powershell ”run as a administrator”-tilassa. Luodaan levylle C ensin polku Salt-kansioon ja lopulta Salt-kansio.
+Tämä ok. Luodaan levylle C ensin polku Salt-kansioon ja lopulta Salt-kansio.
 
 <img width="353" alt="1" src="https://user-images.githubusercontent.com/117899949/204537144-17facf0e-aa44-4b22-a571-d57a7734d4ac.png">
 
@@ -43,7 +43,6 @@ Tallennetaan.
 
 <img width="371" alt="2" src="https://user-images.githubusercontent.com/117899949/204537173-b7888c26-2fc3-4ad6-a516-fc25a210d880.png">
 
-
 Luodaan sitten init.sls- tiedosto.
 
 <img width="403" alt="3" src="https://user-images.githubusercontent.com/117899949/204537297-031abc0a-4ffb-4a6c-9cbc-46654fde4399.png">
@@ -54,14 +53,13 @@ En ollut varma, kuinka tämä toimii Windowsilla, joten lähdin ensin kokeilemaa
      salt-call –local state.apply init
 
 Erroria tulee, eli ei toimi.
-Kokeillaan laittaa polku väliin
+Kokeillaan laittaa polku väliin:
 
       salt-call --file-root=C:\Users\sanni\srv\salt --local state.apply init
 
-Nyt sentään homma menee läpi, mutta joku on väärin, silllä Result on False. Errorviesti kertoo, että ”salt is not an absolute path”. 
+Nyt sentään homma menee läpi, mutta joku on väärin, sillä Result on False. Errorviesti kertoo, että ”salt is not an absolute path”. Korjataan siis polkua.
 
 <img width="527" alt="4" src="https://user-images.githubusercontent.com/117899949/204537368-8a66a214-9d74-458e-b341-6522ffad27b7.png">
-
 
 Avataan init.sls ja tutkitaan tiedostoa.
 Huomaan, että osoitepolku on jäänyt vähän vajaaksi.
