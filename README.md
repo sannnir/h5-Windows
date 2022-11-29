@@ -57,12 +57,12 @@ Kokeillaan laittaa polku väliin:
 
       salt-call --file-root=C:\Users\sanni\srv\salt --local state.apply init
 
-Nyt sentään homma menee läpi, mutta joku on väärin, sillä Result on False. Errorviesti kertoo, että ”salt is not an absolute path”. Korjataan siis polkua.
+Nyt sentään homma menee läpi, mutta joku on väärin, sillä Result on False. Errorviesti kertoo, että ”salt is not an absolute path”.
 
 <img width="527" alt="4" src="https://user-images.githubusercontent.com/117899949/204537368-8a66a214-9d74-458e-b341-6522ffad27b7.png">
 
 Avataan init.sls ja tutkitaan tiedostoa.
-Huomaan, että osoitepolku on jäänyt vähän vajaaksi.
+Huomaan, että osoitepolku on jäänyt vähän vajaaksi. Korjataan siis polkua.
 
 Korjaan siihen C:\Users\sanni\srv\salt\suolaikkuna
 
@@ -70,14 +70,11 @@ Korjaan siihen C:\Users\sanni\srv\salt\suolaikkuna
 
 Nyt näytti menevän läpi.
 
-
-
 ## b) Ei vihkoa, ei kynää. Kerää Windows-koneen tekniset tiedot tekstitiedostoon.
 
-Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta järjestelmästä, kuten käyttöjärjestelmästä, verkkotunnuksesta, IP-osoitteesta, kernelistä, muistista ja monista muista omianaisuuksista.
-Tämä rajapinta on Salt grains
+Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta järjestelmästä, kuten käyttöjärjestelmästä, verkkotunnuksesta, IP-osoitteesta, kernelistä, muistista ja monista muista omianaisuuksista. Tämä rajapinta on Salt grains (Saltstack 2022).
 
-Testaan ensin grains.items komennon Windowsilla
+Testaan ensin grains.items komennon Windowsilla:
 
     salt-call –local grains.items
 
