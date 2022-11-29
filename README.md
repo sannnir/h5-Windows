@@ -1,1 +1,119 @@
 # h5-Windows
+
+Tehtävät ovat osa Tero Karvisen Palvelinten hallinta (Configuration Management Systems)- kurssia. Kurssitoteutus sekä tarkemmat tehtäväkuvaukset löytyvät [täältä](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
+Tehtävän lähteet löytyvät lopusta.
+
+Tehtävät on toteutettu Microsoft Windows 11 Home-käyttöjärjestelmällä (versio 10.0.22621). Lisäksi käytössä on ollut myös Virtual Boxiin (Versio 6.1) asennetulla Ubuntun käyttöjärjestelmällä (versio 22.04.1). Tehtävät on tehty marraskuussa 2022 ja tehtävän tekemisessä on hyödynnetty luennolla tehtyjä muistiinpanoja. Luennon piti Tero Karvinen (24.11.2022) ja se oli kurssin viides luento, jonka aiheena oli "Vaihtoehtoiset järjestelmät", joista kävimme läpi Windowsia.
+
+a)	Hello Window Salt! Tee Windowsille SLS-tiedostoon Salt-tila, joka tekee tiedoston nimeltä "suolaikkuna.txt".
+Aloitetaan asentamalla Salt Minion Windowsille (download install file: https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/windows.html)
+
+Kun tiedosto on tullut latauskansioon, avataan Windowsin PowerShell ”run as a administrator”:ina.
+
+Siirrytään lataukset kansioon
+
+     cd C:\Users\sanni\Downloads 
+
+Tämän jälkeen avataan ladattu tiedosto, joka itseltäni löytyi nimellä 
+
+    ./Salt-Minion-3004.2-1-Py3-AMD64.msi
+
+Tehdään asennus.
+
+KUVA 01
+
+testataan, että salt toimii komennolla
+
+    salt-call –local cmd.run ”echo hello”
+
+KUVA 1.1
+Aloitetaan avaamalla Windowsin powershell ”run as a administrator”-tilassa. Luodaan levylle C ensin polku Salt-kansioon ja lopulta Salt-kansio.
+
+KUVA 1
+Luodaan tekstitiedosto suolaikkuna.txt avaamalla notepad
+
+     notepad.exe suolaikkuna.txt
+
+Tehdään mielikuvituksellinen tiedosto ja kirjoitetaan sinne ”Hello Wordl”.
+Tallennetaan.
+
+KUVA 2
+
+Luodaan sitten init.sls- tiedosto.
+
+Ajetaan tiedosto tämän jälkeen lokaalisti saltilla.
+En ollut varma, kuinka tämä toimii Windowsilla, joten lähdin ensin kokeilemaan tapaa, jolla se toimii Linuxilla
+
+   salt-call –local state.apply init
+Erroria tulee, eli ei toimi.
+Kokeillaan laittaa polku väliin
+
+      salt-call --file-root=C:\Users\sanni\srv\salt --local state.apply init
+Nyt sentään homma menee läpi, mutta joku on väärin, silllä Result on False. Errorviesti kertoo, että ”salt is not an absolute path”. 
+
+KUVA 4
+Avataan init.sls ja tutkitaan tiedostoa.
+Huomaan, että osoitepolku on jäänyt vähän vajaaksi.
+
+Korjaan siihen C:\Users\sanni\srv\salt\suolaikkuna
+
+KUVA 5
+
+Nyt näytti menevän läpi.
+
+
+
+b)	Ei vihkoa, ei kynää. Kerää Windows-koneen tekniset tiedot tekstitiedostoon.
+Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta järjestelmästä, kuten käyttöjärjestelmästä, verkkotunnuksesta, IP-osoitteesta, kernelistä, muistista ja monista muista omianaisuuksista.
+Tämä rajapinta on Salt grains
+
+Testaan ensin grains.items komennon Windowsilla
+
+    salt-call –local grains.items
+
+Tämä toimii ja antaa tietoja koneesta.
+Sitten siirretään tiedot tekstitiedostoon.
+
+    salt-call –local grains.items > tietoja.txt
+
+kurkataan Salt-kansio ls
+
+KUVA 6
+Sieltä löytyy. 
+Testaan vielä, toimiiko Windowsilla cat tietoja.txt- komento
+
+    cat tietoja.txt
+Toimii! Eli tiedot on lisätty tekstitiedostoon.
+
+c)	Kop kop. Onko TCP-portti auki vai kiinni? Näytä esimerkit portin kokeilusta Linuxilla ja Windowsilla. Näytä kummallakin käyttöjärjestelmällä ainakin yksi avoin ja yksi suljettu portti. (Kokeile tätä vain omaan koneeseesi. Vieraiden koneiden ja verkkojen porttiskannaaminen on kiellettyä. Yksittäisen portin testaavat komennot ovat suositeltavia, esim. nc, tnc)
+Tietokoneita ja tietoverkkoja käsitellessä ei voi välttyä sanalta ”portti”. Portit toimivat ns. valvontapisteinä saapuvalle ja lähtevälle liikenteelle, kun muodostetaan yhteyksiä muiden päätelaitteiden tai Internetin välille (Ionos 2022).
+Windowsilla komento netstat -ano avaa porttitietoja. Status-otsikon alla tieto ”LISTENING” tarkoittaa, että palveluun on yhteys ko. portin kautta, kun puolestaan ” ESTABLISHED” tarkoittaa sitä, että portti on avoinna, mutta yhteyttä ei ole muodostettu (Ionos 2022).
+
+     netstat -ano
+
+Tällä saa kuitenkin listan kaikista avoinna olevista TCP/UDP-porteista.
+Mikäli haluaa yksittäisen portin, voi käyttää komentoa
+
+    test-netconnection <iposoite> -p <porttinumero>
+    
+    test-netconnection toimii myös lyhenteellä tnc
+LINUXILLA:
+
+Linuxilla saa seuraavalla komennolla listattua portit, joista näkyy ovatko ne avoinna vai kiinni.
+
+    sudo ss -tulipn 
+
+UNCONN = entiiämikäon
+LISTEN = avoinna
+
+LÄHTEET
+
+Ionos 2022. Port tests: Checking open ports with a port check. Luettavissa: https://www.ionos.com/digitalguide/server/security/checking-open-ports/. Luettu: 29.11.2022
+
+Saltstack 2022. Grains. Luettavissa: https://docs.saltproject.io/en/latest/topics/grains/index.html. Luettu: 29.11.2022
+
+Tero Karvinen 2022. Control Windows with Salt. Luettavissa: https://terokarvinen.com/2018/control-windows-with-salt/?fromSearch=windows%20salt. Luettu: 29.11.2022
+
+Tero Karvinen 2022.Configuration Management Systems - Palvelinten Hallinta. Luettavissa: https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/. Luettu: 29.11.2022
+
+Vivek Gite 2022. How to check open ports in Linux using the CLI. Luettavissa: https://www.cyberciti.biz/faq/how-to-check-open-ports-in-linux-using-the-cli/. Luettu: 29.11.2022
