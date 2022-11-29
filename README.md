@@ -72,7 +72,7 @@ Nyt näytti menevän läpi.
 
 ## b) Ei vihkoa, ei kynää. Kerää Windows-koneen tekniset tiedot tekstitiedostoon.
 
-Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta järjestelmästä, kuten käyttöjärjestelmästä, verkkotunnuksesta, IP-osoitteesta, kernelistä, muistista ja monista muista omianaisuuksista. Tämä rajapinta on Salt grains (Saltstack 2022).
+Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta järjestelmästä, kuten käyttöjärjestelmästä, verkkotunnuksesta, IP-osoitteesta, kernelistä, muistista ja monista muista omianaisuuksista. Tämä rajapinta on Salt grains. (Saltstack 2022.)
 
 Testaan ensin grains.items komennon Windowsilla:
 
@@ -96,9 +96,9 @@ Toimii! Eli tiedot on lisätty tekstitiedostoon.
 
 ## c) Kop kop. Onko TCP-portti auki vai kiinni? Näytä esimerkit portin kokeilusta Linuxilla ja Windowsilla. Näytä kummallakin käyttöjärjestelmällä ainakin yksi avoin ja yksi suljettu portti. (Kokeile tätä vain omaan koneeseesi. Vieraiden koneiden ja verkkojen porttiskannaaminen on kiellettyä. Yksittäisen portin testaavat komennot ovat suositeltavia, esim. nc, tnc) 
 
-Tietokoneita ja tietoverkkoja käsitellessä ei voi välttyä sanalta ”portti”. Portit toimivat ns. valvontapisteinä saapuvalle ja lähtevälle liikenteelle, kun muodostetaan yhteyksiä muiden päätelaitteiden tai Internetin välille (Ionos 2022).
+Tietokoneita ja tietoverkkoja käsitellessä ei voi välttyä sanalta ”portti”. Portit toimivat ns. valvontapisteinä saapuvalle ja lähtevälle liikenteelle, kun muodostetaan yhteyksiä muiden päätelaitteiden tai Internetin välille. (Ionos 2022.)
 
-Windowsilla komento netstat -ano avaa porttitietoja. Status-otsikon alla tieto ”LISTENING” tarkoittaa, että palveluun on yhteys ko. portin kautta, kun puolestaan ” ESTABLISHED” tarkoittaa sitä, että portti on avoinna, mutta yhteyttä ei ole muodostettu (Ionos 2022).
+Windowsilla komento netstat -ano avaa porttitietoja. Status-otsikon alla tieto ”LISTENING” tarkoittaa, että palveluun on yhteys ko. portin kautta, kun puolestaan ” ESTABLISHED” tarkoittaa sitä, että portti on avoinna, mutta yhteyttä ei ole muodostettu. (Ionos 2022.)
 
      netstat -ano
 
