@@ -96,6 +96,8 @@ Toimii! Eli tiedot on lisätty tekstitiedostoon.
 
 ## c) Kop kop. Onko TCP-portti auki vai kiinni? Näytä esimerkit portin kokeilusta Linuxilla ja Windowsilla. Näytä kummallakin käyttöjärjestelmällä ainakin yksi avoin ja yksi suljettu portti. (Kokeile tätä vain omaan koneeseesi. Vieraiden koneiden ja verkkojen porttiskannaaminen on kiellettyä. Yksittäisen portin testaavat komennot ovat suositeltavia, esim. nc, tnc) 
 
+### Windowsilla: 
+
 Tietokoneita ja tietoverkkoja käsitellessä ei voi välttyä sanalta ”portti”. Portit toimivat ns. valvontapisteinä saapuvalle ja lähtevälle liikenteelle, kun muodostetaan yhteyksiä muiden päätelaitteiden tai Internetin välille. (Ionos 2022.)
 
 Windowsilla komento netstat -ano avaa porttitietoja. Status-otsikon alla tieto ”LISTENING” tarkoittaa, että palveluun on yhteys ko. portin kautta, kun puolestaan ” ESTABLISHED” tarkoittaa sitä, että portti on avoinna, mutta yhteyttä ei ole muodostettu. (Ionos 2022.)
@@ -109,7 +111,7 @@ Mikäli haluaa yksittäisen portin, voi käyttää komentoa
     
     test-netconnection toimii myös lyhenteellä tnc
     
-LINUXILLA:
+### Linuxilla:
 
 Linuxilla saa seuraavalla komennolla listattua portit, joista näkyy ovatko ne avoinna vai kiinni.
 
@@ -118,7 +120,8 @@ Linuxilla saa seuraavalla komennolla listattua portit, joista näkyy ovatko ne a
 UNCONN = entiiämikäon
 LISTEN = avoinna
 
-LÄHTEET
+********************************************
+LÄHTEET:
 
 Ionos 2022. Port tests: Checking open ports with a port check. Luettavissa: https://www.ionos.com/digitalguide/server/security/checking-open-ports/. Luettu: 29.11.2022
 
