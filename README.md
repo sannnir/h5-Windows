@@ -1,4 +1,4 @@
-# h5-Windows
+# h5_Windows
 
 Tehtävät ovat osa Tero Karvisen Palvelinten hallinta (Configuration Management Systems)- kurssia. Kurssitoteutus sekä tarkemmat tehtäväkuvaukset löytyvät [täältä](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
 Tehtävän lähteet löytyvät lopusta.
