@@ -115,10 +115,9 @@ Mikäli haluaa yksittäisen portin, voi käyttää komentoa
 
 Linuxilla saa seuraavalla komennolla listattua portit, joista näkyy ovatko ne avoinna vai kiinni.
 
-    sudo ss -tulipn 
+    sudo ss -tulpn 
 
-UNCONN = entiiämikäon
-LISTEN = avoinna
+
 
 ********************************************
 LÄHTEET:
