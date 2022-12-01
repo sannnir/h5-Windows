@@ -38,7 +38,7 @@ Luodaan tekstitiedosto suolaikkuna.txt avaamalla notepad:
 
      notepad.exe suolaikkuna.txt
 
-Tehdään mielikuvituksellinen tiedosto ja kirjoitetaan sinne ”Hello Wordl”.
+Tehdään mielikuvituksellinen tiedosto ja kirjoitetaan sinne ”Hello World”.
 Tallennetaan.
 
 <img width="371" alt="2" src="https://user-images.githubusercontent.com/117899949/204537173-b7888c26-2fc3-4ad6-a516-fc25a210d880.png">
