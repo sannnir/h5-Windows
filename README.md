@@ -26,7 +26,7 @@ Tehdään asennus.
 
 Testataan, että salt toimii ajamalla lokaalisti komento "echo hello":
 
-    salt-call –local cmd.run ”echo hello”
+    salt-call --local cmd.run ”echo hello”
 
 <img width="443" alt="1 1" src="https://user-images.githubusercontent.com/117899949/204537047-ec99596a-354f-4f8a-83fa-69a1e5c78d1f.png">
 
@@ -50,7 +50,7 @@ Luodaan sitten init.sls- tiedosto.
 Ajetaan tiedosto tämän jälkeen lokaalisti saltilla.
 En ollut varma, kuinka tämä toimii Windowsilla, joten lähdin ensin kokeilemaan tapaa, jolla se toimii Linuxilla
 
-     salt-call –local state.apply init
+     salt-call --local state.apply init
 
 Erroria tulee, eli ei toimi.
 Kokeillaan laittaa polku väliin:
@@ -76,12 +76,12 @@ Saltin mukana tulee käyttöliittymä, jolla saadaan tietoa taustasta olevasta j
 
 Testaan ensin grains.items komennon Windowsilla:
 
-    salt-call –local grains.items
+    salt-call --local grains.items
 
 Tämä toimii ja antaa tietoja koneesta.
 Sitten siirretään tiedot tekstitiedostoon.
 
-    salt-call –local grains.items > tietoja.txt
+    salt-call --local grains.items > tietoja.txt
 
 kurkataan Salt-kansio ls
 
