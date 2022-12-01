@@ -8,7 +8,7 @@ Tehtävät on tehty marraskuussa 2022 ja tehtävän tekemisessä on hyödynnetty
 
 ## a) Hello Window Salt! Tee Windowsille SLS-tiedostoon Salt-tila, joka tekee tiedoston nimeltä "suolaikkuna.txt".
 
-Aloitetaan asentamalla Salt Minion Windowsille ([download install file](https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/windows.html)).
+Aloitetaan asentamalla Salt Minion Windowsille ([download install file](https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/windows.html)). Latasin itse tämän version: Salt-Minion-3004.2-1-Py3-AMD64.msi
 
 Kun tiedosto on tullut latauskansioon, avataan Windowsin PowerShell ”run as a administrator”:ina.
 
